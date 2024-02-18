@@ -5,7 +5,7 @@ metadata:
   labels:
     app: decision
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: decision
@@ -19,3 +19,8 @@ spec:
         image: ggrab/appdecision:latest
         ports:
         - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+

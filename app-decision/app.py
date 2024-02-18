@@ -14,10 +14,15 @@ class Decisions(Resource):
         self.rng = random.Random(seed)
         return self.rng.choice(DECISION_LIST)
 
+class Health(Resource):
+    def get(self):
+        return ""
+
 def create_app(test_config=None):
     app = Flask(__name__)
     api = Api(app)
     api.add_resource(Decisions, '/decisions')
+    api.add_resource(Health, '/healthz')
 
     # Default configuration
     app.config.from_mapping(
