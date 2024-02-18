@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "app-decision"
+version = "0.1.0"
+description = "Mock App exposing simple REST endpoint that returns a random decision."
+authors = ["Georg Grab <me@georggrab.net>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+flask-restful = "^0.3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
