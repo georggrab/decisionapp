@@ -1,22 +1,34 @@
-from flask import Flask
+from flask import Flask, current_app
 from flask_restful import Resource, Api
 import random
 
-app = Flask(__name__)
-api = Api(app)
+DECISION_LIST = [
+    'A random decision',
+    'Another random item',
+    'This is just an example'
+]
 
 class Decisions(Resource):
-    DECISION_LIST = [
-        'A random decision',
-        'Another random item',
-        'This is just an example'
-    ]
-
     def get(self):
-        return random.choice(Decisions.DECISION_LIST)
+        seed = current_app.config['RANDOM_SEED']
+        self.rng = random.Random(seed)
+        return self.rng.choice(DECISION_LIST)
 
-api.add_resource(Decisions, '/decisions')
+def create_app(test_config=None):
+    app = Flask(__name__)
+    api = Api(app)
+    api.add_resource(Decisions, '/decisions')
+
+    # Default configuration
+    app.config.from_mapping(
+        SECRET_KEY='dev',
+        RANDOM_SEED=None
+    )
+    app.config.from_prefixed_env() # Load config from FLASK_* env variables
+    if test_config is not None:
+        app.config.from_mapping(test_config) # Override with test_config, if present
+    return app
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    create_app().run(debug=True)
 

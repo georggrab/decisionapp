@@ -11,6 +11,9 @@ python = "^3.11"
 flask-restful = "^0.3.10"
 
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
