@@ -12,7 +12,7 @@ Furthermore, to showcase using the App, there is a simple `decision-pipeline` th
 * Logs the data retrieved from the decision API.
 
 The remainder of this document discusses the recommended way of setting up this repository and running it locally for testing.
-For details regarding `app-decision` and `decision-pipeline`, visit the respective project directories.
+For details regarding `app-decision`, visit the corresponding directory..
 
 
 # Getting started
