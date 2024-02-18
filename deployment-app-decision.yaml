@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-decision-deployment
+  labels:
+    app: decision
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: decision
+  template:
+    metadata:
+      labels:
+        app: decision
+    spec:
+      containers:
+      - name: appdecision
+        image: ggrab/appdecision:latest
+        ports:
+        - containerPort: 8080

@@ -22,8 +22,15 @@ poetry run pytest
 # Build
 
 For deployment, the application is packaged inside a docker container.
+
 To build the container, run 
 
 ```bash
-docker build -t decisionapp:latest .
+docker build -t ggrab/appdecision:latest .
+```
+
+To then publish the container to DockerHub, run 
+
+```bash
+docker push ggrab/appdecision:latest .
 ```
