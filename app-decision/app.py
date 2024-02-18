@@ -5,7 +5,8 @@ import random
 DECISION_LIST = [
     'A random decision',
     'Another random item',
-    'This is just an example'
+    'This is just an example',
+    'A fourth example later added',
 ]
 
 class Decisions(Resource):

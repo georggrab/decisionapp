@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: decision-pipeline
+spec:
+  containers:
+  - name: decision-pipeline
+    image: curlimages/curl:8.6.0
+    command: ["/bin/sh", "-c"]
+    args:
+      - |
+        while true; do
+          curl --connect-timeout 10 --max-time 15 http://app-decision-service:8080/decisions 2>/dev/null
+          sleep 1
+        done
