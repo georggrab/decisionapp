@@ -18,8 +18,9 @@ COPY --from=builder /app .
 WORKDIR /app
 RUN poetry install --no-root --with dev && poetry run pytest
 
-FROM python:3.11-alpine
+FROM python:3.11-alpine AS runner
 WORKDIR /app
+COPY --from=builder /app .
 
 RUN adduser app -DHh ${WORKDIR} -u 1000
 USER 1000

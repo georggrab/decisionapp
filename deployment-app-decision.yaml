@@ -4,6 +4,9 @@ metadata:
   name: app-decision-deployment
   labels:
     app: decision
+  annotations:
+    keel.sh/policy: minor
+    keel.sh/trigger: poll
 spec:
   replicas: 3
   selector:
@@ -16,7 +19,8 @@ spec:
     spec:
       containers:
       - name: appdecision
-        image: ggrab/appdecision:latest
+        image: ggrab/appdecision:0.0.10
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         livenessProbe:
