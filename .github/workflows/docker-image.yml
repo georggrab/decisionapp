@@ -24,9 +24,8 @@ jobs:
       run: cd app-decision && docker build --target tester . --file Dockerfile --tag ggrab/appdecision:test
     - name: Publish the Docker Image
       run: |
-        DATE=$(date +%s)
         cd app-decision
         docker build . --file Dockerfile --tag ggrab/appdecision:latest
-        docker tag ggrab/appdecision:latest ggrab/appdecision:$DATE
+        docker tag ggrab/appdecision:latest ggrab/appdecision:0.0.${{ github.run_number }}
         docker push ggrab/appdecision:latest
-        docker push ggrab/appdecision:$DATE
+        docker push ggrab/appdecision:0.0.${{ github.run_number }}
