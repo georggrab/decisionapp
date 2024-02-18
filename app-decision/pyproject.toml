@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "app-decision"
+name = "appdecision"
 version = "0.1.0"
 description = "Mock App exposing simple REST endpoint that returns a random decision."
 authors = ["Georg Grab <me@georggrab.net>"]
@@ -9,6 +9,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 flask-restful = "^0.3.10"
+gunicorn = "^21.2.0"
 
 
 [tool.poetry.group.dev.dependencies]
