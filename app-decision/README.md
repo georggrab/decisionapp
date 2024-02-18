@@ -7,4 +7,23 @@ Simple Mock Application exposing a REST endpoint that randomly returns a decisio
 
 To run the app locally, use [poetry](https://python-poetry.org/) to install dependencies and set up the environment
 
-To test the app, run `poetry run pytest`. 
+To start the app for local development, run:
+
+```
+poetry run python app.py
+```
+
+To execute tests, run:
+
+```
+poetry run pytest
+```
+
+# Build
+
+For deployment, the application is packaged inside a docker container.
+To build the container, run 
+
+```bash
+docker build -t decisionapp:latest .
+```
