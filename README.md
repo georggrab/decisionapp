@@ -38,6 +38,10 @@ kubectl apply -f deployment-app-decision.yaml
 
 You may verify using `kubectl get pods` that the deployment, with initially three replicas, is coming online as expected.
 
+## CI/CD
+
+CI/CD is [here on Github actions](https://github.com/georggrab/decisionapp/actions), defined through [this file](https://github.com/georggrab/decisionapp/blob/master/.github/workflows/docker-image.yml). This is a very simplified version of a pipeline that we might have triggered by pushes to the main branch or executed when pull requests are opened. The CI/CD builds and tests the Docker Image, and when that is successful, pushes a new `:latest` tag to Dockerhub, as well as a `0.0.x` tag that is continually incremented. The latter tag is then used by keel to detect a new image has appeared and to subsequently rollout a new deployment revision to the cluster.
+
 
 ## Executing the decision pipeline
 
